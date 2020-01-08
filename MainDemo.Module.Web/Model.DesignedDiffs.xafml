@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Options CollectionsEditMode="Edit">
+    <LayoutManagerOptions CaptionColon="" />
+  </Options>
+  <ActionDesign>
+    <Actions>
+      <Action Id="FindBySubjectAction" PaintStyle="Image" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.Persistent.BaseImpl.Note">
+      <OwnMembers>
+        <Member Name="Text" PropertyEditorType="DevExpress.ExpressApp.Office.Web.ASPxRichTextPropertyEditor" DocumentStorageFormat="HTML" />
+      </OwnMembers>
+    </Class>
+    <Class Name="MainDemo.Module.BusinessObjects.Payment">
+      <OwnMembers>
+        <Member Name="Rate" DisplayFormat="{0:C}" />
+        <Member Name="Amount" DisplayFormat="{0:C}" />
+      </OwnMembers>
+    </Class>
+    <Class Name="MainDemo.Module.BusinessObjects.Contact" EditorTypeName="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxGridListEditor" />
+  </BOModel>
+  <SchemaModules>
+    <SchemaModule Name="SchedulerAspNetModule" Version="13.2.0.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="13.2.0.0" IsNewNode="True" />
+    <SchemaModule Name="SystemAspNetModule" Version="13.2.0.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="13.2.0.0" />
+    <SchemaModule Name="ValidationModule" Version="13.2.0.0" />
+    <SchemaModule Name="ViewVariantsModule" Version="13.2.0.0" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="Contact_DetailView">
+      <Items>
+        <PropertyEditor Id="Photo" ImageEditorFixedHeight="175" IsNewNode="True" />
+        <PropertyEditor Id="Location" PropertyEditorType="DevExpress.ExpressApp.Maps.Web.WebMapsPropertyEditor" />
+        <PropertyEditor Id="Photo" ImageEditorFixedHeight="175" />
+      </Items>
+    </DetailView>
+    <ListView Id="Contact_ListView_Map" EditorTypeName="DevExpress.ExpressApp.Maps.Web.WebMapsListEditor" ClassName="MainDemo.Module.BusinessObjects.Contact" IsGroupPanelVisible="True" AutoExpandAllGroups="True" Caption="Contacts on Map" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Address1" PropertyName="Address1" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Address2" PropertyName="Address2" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Anniversary" PropertyName="Anniversary" Index="-1" View="" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="BirthDate" PropertyName="BirthDate" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DisplayName" PropertyName="DisplayName" Width="400" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="FirstName" PropertyName="FirstName" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="FullName" PropertyName="FullName" Index="-1" View="" Width="400" IsNewNode="True" />
+        <ColumnInfo Id="Manager" PropertyName="Manager" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxLookupPropertyEditor" Index="-1" View="" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="MiddleName" PropertyName="MiddleName" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="NickName" PropertyName="NickName" Index="-1" View="" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Notes" PropertyName="Notes" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Photo" PropertyName="Photo" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="SpouseName" PropertyName="SpouseName" Index="-1" View="" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="TitleOfCourtesy" PropertyName="TitleOfCourtesy" Index="-1" View="" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="WebPageAddress" PropertyName="WebPageAddress" Index="-1" View="" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="LastName" PropertyName="LastName" Index="0" View="" Width="100" SortIndex="0" SortOrder="Ascending" IsNewNode="True" />
+        <ColumnInfo Id="Position" PropertyName="Position" Index="1" View="" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Department" PropertyName="Department" Index="2" View="" Width="70" GroupIndex="0" IsNewNode="True" />
+        <ColumnInfo Id="Email" PropertyName="Email" Index="3" View="" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Location" PropertyName="Location" Width="70" Index="9" IsNewNode="True" />
+        <ColumnInfo Id="Latitude" PropertyName="Latitude" Width="50" Index="11" IsNewNode="True" />
+        <ColumnInfo Id="Longitude" PropertyName="Longitude" Width="50" Index="12" IsNewNode="True" />
+      </Columns>
+      <Filters CurrentFilterId="AllContacts" IsNewNode="True">
+        <Filter Id="AllContacts" Caption="All Contacts" IsNewNode="True" />
+        <Filter Id="Developers" Criteria="Position.Title = 'Developer'" IsNewNode="True" />
+        <Filter Id="Development Department Contacts" Criteria="[Department.Title] = 'Development Department' " IsNewNode="True" />
+      </Filters>
+    </ListView>
+    <ListView Id="Contact_ListView_Varied" EditorTypeName="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxGridListEditor">
+      <Variants>
+        <Variant Id="Map" Caption="Map" Index="2" ViewID="Contact_ListView_Map" IsNewNode="True" />
+      </Variants>
+    </ListView>
+    <ListView Id="Contact_LookupListView" EditorTypeName="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxGridListEditor" />
+    <DetailView Id="Contact_DetailView">
+      <Items>
+        <PropertyEditor Id="Location" PropertyEditorType="DevExpress.ExpressApp.Maps.Web.WebMapsPropertyEditor">
+          <MapSettings Height="150" Width="150" ControlsEnabled="False" />
+        </PropertyEditor>
+        <PropertyEditor Id="Manager" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxLookupPropertyEditor" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="72.898550724637687">
+            <LayoutGroup Id="Person" RelativeSize="67.196819085487078">
+              <LayoutGroup Id="Person_col1" RelativeSize="80" />
+              <LayoutGroup Id="Person_col2" RelativeSize="20" Caption="Person_col2">
+                <LayoutItem Id="Photo" RelativeSize="100" Index="0" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Contact" RelativeSize="32.803180914512922">
+              <LayoutGroup Id="Contact_col1" RelativeSize="48.717948717948715" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="9.27536231884058" />
+          <TabbedGroup Id="Tabs" RelativeSize="17.826086956521738" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="AuthenticationStandardLogonParameters_DetailView_Demo" CaptionColon="" >
+      <Items>
+        <StaticText Id="LogonText" Caption="LogonText(8)" />
+        <StaticText Id="PasswordHint" Caption="PasswordHint(13)" />
+        <StaticText Id="WelcomeText" Caption="WelcomeText(7)" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="RootGroup" RelativeSize="100">
+            <LayoutGroup Id="ImageGroup" Caption="ImageGroup(3)" Direction="Horizontal">
+              <LayoutItem Id="LogonImage" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="EditorsGroup" CustomCSSClassName="WelcomeGroupWrapperCssClass" RelativeSize="100">
+              <LayoutGroup Id="Text" Index="0" CustomCSSClassName="WelcomeGroupClassCSS" >
+                <LayoutItem Id="WelcomeText" CustomCSSClassName="WelcomeTextClassCSS" Index="0" />
+                <LayoutItem Id="PasswordHint" CustomCSSClassName="PasswordHintClassCSS" ViewItem="PasswordHint" Index="1" IsNewNode="True" />
+                <LayoutItem Id="LogonText" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Editors" Index="1" CustomCSSClassName="MainGroupClassCSS">
+                <LayoutItem Id="LogonText" CustomCSSClassName="LogonTextClassCSS" ViewItem="LogonText" Index="0" IsNewNode="True" />
+                <LayoutItem Id="UserName" CustomCSSClassName="LogonItemClassCSS" Index="1" />
+                <LayoutItem Id="Password" CustomCSSClassName="LogonItemClassCSS" Index="2" />
+              </LayoutGroup>
+              <LayoutGroup Id="PasswordHintGroup" Removed="True" >
+                <LayoutItem Id="PasswordHint" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="DemoTask_Contacts_ListView" EditorTypeName="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxGridListEditor" />
+    <ListView Id="Contact_ListView">
+      <Columns>
+        <ColumnInfo Id="Manager" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxLookupPropertyEditor" />
+      </Columns>
+    </ListView>
+    <ListView Id="Contact_ListView_AllColumns">
+      <Columns>
+        <ColumnInfo Id="Manager" PropertyEditorType="DevExpress.ExpressApp.Web.Editors.ASPx.ASPxLookupPropertyEditor" />
+      </Columns>
+    </ListView>
+    <ListView Id="Department_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Office" PropertyName="Office" Index="1" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <DetailView Id="UseSQLAlternativeInfo_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" Direction="Horizontal">
+          <LayoutItem Id="InfoStaticImage" ViewItem="InfoStaticImage" Index="0" RelativeSize="12" IsNewNode="True" />
+          <LayoutGroup Id="TextInfoGroup" ShowCaption="False" Index="1" RelativeSize="88" Direction="Vertical" IsNewNode="True">
+            <LayoutItem Id="SQLIssueText"  ViewItem="SQLIssueText" Index="0" IsNewNode="True" />
+            <LayoutItem Id="AlternativeStaticText" ViewItem="AlternativeStaticText" Index="1" IsNewNode="True" />
+            <LayoutItem Id="NoteStaticText" ViewItem="NoteStaticText" Index="2" IsNewNode="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="SimpleEditors" Removed="True" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="UseSQLAlternativeInfo_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" Direction="Horizontal">
+          <LayoutItem Id="InfoStaticImage" ViewItem="InfoStaticImage" Index="0" RelativeSize="12" IsNewNode="True" />
+          <LayoutGroup Id="TextInfoGroup" ShowCaption="False" Index="1" RelativeSize="88" Direction="Vertical" IsNewNode="True">
+            <LayoutItem Id="SQLIssueText"  ViewItem="SQLIssueText" Index="0" IsNewNode="True" />
+            <LayoutItem Id="AlternativeStaticText" ViewItem="AlternativeStaticText" Index="1" IsNewNode="True" />
+            <LayoutItem Id="NoteStaticText" ViewItem="NoteStaticText" Index="2" IsNewNode="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="SimpleEditors" Removed="True" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

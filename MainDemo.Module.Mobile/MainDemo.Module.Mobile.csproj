@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B657F912-D78B-46DB-BEEE-95722F3D3979}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MainDemo.Module.Mobile</RootNamespace>
+    <AssemblyName>MainDemo.Module.Mobile</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <LangVersion>6</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <LangVersion>6</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'EasyTest|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <LangVersion>6</LangVersion>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ReferencePath>..\MainDemo.Mobile\lib\</ReferencePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v19.2">
+    <Private>False</Private></Reference>
+    <Reference Include="DevExpress.ExpressApp.Mobile.v19.2">
+      <SpecificVersion>False</SpecificVersion>
+    <Private>False</Private></Reference>
+    <Reference Include="DevExpress.ExpressApp.Security.v19.2">
+    <Private>False</Private></Reference>
+    <Reference Include="DevExpress.ExpressApp.v19.2">
+    <Private>False</Private></Reference>
+    <Reference Include="DevExpress.ExpressApp.Xpo.v19.2">
+    <Private>False</Private></Reference>
+    <Reference Include="DevExpress.Persistent.Base.v19.2">
+    <Private>False</Private></Reference>
+    <Reference Include="DevExpress.Persistent.BaseImpl.v19.2">
+    <Private>False</Private></Reference>
+    <Reference Include="DevExpress.Xpo.v19.2">
+    <Private>False</Private></Reference>
+    <Reference Include="DevExpress.ExpressApp.Maps.Mobile.v19.2">
+    <Private>False</Private></Reference>
+    <Reference Include="Newtonsoft.Json">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System"><Private>False</Private></Reference>
+    <Reference Include="System.Configuration"><Private>False</Private></Reference>
+    <Reference Include="System.Core"><Private>False</Private></Reference>
+    <Reference Include="System.Drawing"><Private>False</Private></Reference>
+    <Reference Include="System.Xml.Linq"><Private>False</Private></Reference>
+    <Reference Include="System.Data.DataSetExtensions"><Private>False</Private></Reference>
+    <Reference Include="Microsoft.CSharp"><Private>False</Private></Reference>
+    <Reference Include="System.Data"><Private>False</Private></Reference>
+    <Reference Include="System.Xml"><Private>False</Private></Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\ContactDefaultImageController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ContactDefaultImageController.Designer.cs">
+      <DependentUpon>ContactDefaultImageController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ContactLocationController.cs" />
+    <Compile Include="Controllers\DisableActionsController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\DisableActionsController.Designer.cs">
+      <DependentUpon>DisableActionsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\MobileNullTextEditorController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\MobileNullTextEditorController.Designer.cs">
+      <DependentUpon>MobileNullTextEditorController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\NotesMobileViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MobileModule.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MobileModule.designer.cs">
+      <DependentUpon>MobileModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controllers\MobileNullTextEditorController.resx">
+      <DependentUpon>MobileNullTextEditorController.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MobileModule.resx">
+      <DependentUpon>MobileModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\NoProfileImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\State_Task_Completed.svg" />
+    <EmbeddedResource Include="Images\State_Task_Deferred.svg" />
+    <EmbeddedResource Include="Images\State_Task_InProgress.svg" />
+    <EmbeddedResource Include="Images\State_Task_NotStarted.svg" />
+    <EmbeddedResource Include="Images\State_Task_WaitingForSomeoneElse.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Action_Search_Object_FindObjectByID.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MainDemo.Module\MainDemo.Module.csproj">
+      <Project>{D7B72244-7C11-414B-ABE5-A3EB78567D93}</Project>
+      <Name>MainDemo.Module</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model.DesignedDiffs.Localization.de.xafml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <Subtype>Designer</Subtype>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\State_Priority_High.svg" />
+    <EmbeddedResource Include="Images\State_Priority_Low.svg" />
+    <EmbeddedResource Include="Images\State_Priority_Normal.svg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

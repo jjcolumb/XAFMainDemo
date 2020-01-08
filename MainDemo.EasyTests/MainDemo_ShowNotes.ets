@@ -1,0 +1,56 @@
+#DropDB MainDemo
+#Application MainDemoWin
+#Application MainDemoWeb
+
+*FillForm
+ User Name = Sam
+*Action Log In
+
+*Action Navigation(Notes)
+
+*Action New
+*FillForm
+ Text = First note
+*Action Save and Close
+
+*Action New
+*FillForm
+ Text = Second note
+*Action Save and Close
+
+*Action New
+*FillForm
+ Text = Third note
+*Action Save and Close
+
+*Action Navigation(Tasks)
+
+*Action New
+
+*FillForm
+ Description = Existent text
+
+*Action Show Notes
+*ProcessRecord 
+ Text = First note
+
+*CheckFieldValues
+ Description[0] = Existent text
+ Description[1] = First note
+
+*FillForm
+ Description = New text
+
+*Action Show Notes
+*ProcessRecord 
+ Text = Second note
+
+*CheckFieldValues
+ Description[0] = New text
+ Description[1] = Second note
+
+#IfDef MainDemoWin
+*Action Undo
+*HandleDialog
+ Respond = Yes
+#EndIf

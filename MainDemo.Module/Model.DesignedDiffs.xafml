@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="Main Demo" Subtitle="eXpressApp Framework demo application" Company="Developer Express Inc." WebSite="http://www.devexpress.com" PreferredLanguage="(Default language)">
+  <ActionDesign>
+    <Actions>
+      <Action Id="ClearTasksAction" SelectionDependencyType="RequireSingleObject" ConfirmationMessage="Are you sure you want to clear the Tasks list?" ToolTip="Clear the current Contact's Tasks list" Shortcut="Control+Shift+C" />
+      <Action Id="SaveAndClose" ValidationContexts="SaveAndClose" />
+      <Action Id="Task.MarkCompleted" ValidationContexts="MarkCompleted" />
+    </Actions>
+    <ActionToContainerMapping>
+      <ActionContainer Id="RecordEdit">
+        <ActionLink ActionId="ClearTasksAction" IsNewNode="True" />
+      </ActionContainer>
+      <ActionContainer Id="Unspecified">
+        <ActionLink ActionId="ClearTasksAction" Removed="True" />
+      </ActionContainer>
+    </ActionToContainerMapping>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.Security.AuthenticationStandardLogonParameters" DefaultDetailView="AuthenticationStandardLogonParameters_DetailView_Demo" />
+    <Class Name="DevExpress.Persistent.BaseImpl.Analysis" Caption="Analytics" />
+    <Class Name="DevExpress.Persistent.BaseImpl.Note" ObjectCaptionFormat="" />
+    <Class Name="DevExpress.Persistent.BaseImpl.Party">
+      <OwnMembers>
+        <Member Name="Address1" Caption="Address" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.Task" Caption="Base Task">
+      <OwnMembers>
+        <Member Name="Subject" Size="200" RowCount="2" />
+      </OwnMembers>
+    </Class>
+    <Class Name="MainDemo.Module.BusinessObjects.Contact" ObjectCaptionFormat="{0:FullName}" ImageName="BO_Employee" DefaultListView="Contact_ListView_Varied">
+      <OwnMembers>
+        <Member Name="Position" DataSourceProperty="Department.Positions" DataSourcePropertyIsNullMode="SelectAll" />
+        <Member Name="TitleOfCourtesy" Caption="Title" />
+      </OwnMembers>
+    </Class>
+    <Class Name="MainDemo.Module.BusinessObjects.Department" ImageName="BO_Department">
+      <OwnMembers>
+        <Member Name="Title" Caption="Name" />
+      </OwnMembers>
+    </Class>
+    <Class Name="MainDemo.Module.BusinessObjects.Payment" ImageName="BO_SaleItem">
+      <OwnMembers>
+        <Member Name="Hours" ImmediatePostData="True" />
+        <Member Name="Rate" ImmediatePostData="True" />
+      </OwnMembers>
+    </Class>
+    <Class Name="MainDemo.Module.BusinessObjects.Position" ImageName="BO_Position" />
+  </BOModel>
+  <CreatableItems>
+    <CreatableItem ClassName="DevExpress.Persistent.BaseImpl.Event" Caption="Event" IsNewNode="True" />
+    <CreatableItem ClassName="DevExpress.Persistent.BaseImpl.Note" IsNewNode="True" />
+  </CreatableItems>
+  <NavigationItems GenerateRelatedViewVariantsGroup="True" RelatedAnalysisGroupCaption="Analytics" RelatedViewVariantsGroupCaption="Views" GenerateRelatedReportsGroup="True" GenerateRelatedAnalysisGroup="True" StartupNavigationItem="Contact_ListView">
+    <Items>
+      <Item Id="Default" ChildItemsDisplayStyle="List" Index="0">
+        <Items>
+          <Item Id="Contact_ListView" Caption="Contacts" ViewId="Contact_ListView_Varied" />
+          <Item Id="DemoTask_ListView" Caption="Tasks" />          
+          <Item Id="Department_ListView" Caption="Departments" />
+          <Item Id="Note" ViewId="Note_ListView" Caption="Notes" IsNewNode="True" />
+          <Item Id="Payment_ListView" Caption="Payments" />
+          <Item Id="PermissionPolicyRole_ListView" Caption="Roles" IsNewNode="True" />
+          <Item Id="PermissionPolicyUser_ListView" Caption="Users" IsNewNode="True" />
+          <Item Id="Position_ListView" Caption="Positions" Removed="True" />
+          <Item Id="Resume_ListView" Caption="Resumes" />
+        </Items>
+      </Item>
+      <Item Id="Reports">
+        <Items>
+          <Item Id="Analysis_ListView" Caption="Analytics" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <Options LookupSmallCollectionItemCount="75">
+    <LayoutManagerOptions RequiredFieldMark="*" />
+  </Options>
+  <SchemaModules IsNewNode="True">
+    <SchemaModule Name="SystemModule" Version="18.1.6.0" IsNewNode="True" />
+    <SchemaModule Name="ValidationModule" Version="18.1.6.0" IsNewNode="True" />
+    <SchemaModule Name="ViewVariantsModule" Version="18.1.6.0" IsNewNode="True" />
+  </SchemaModules>
+  <Validation>
+    <Rules>
+      <RuleCriteria Id="TaskIsNotStarted" Criteria="Status != 'NotStarted'" TargetContextIDs="MarkCompleted" CustomMessageTemplate="Cannot set the task completed because it's not started." TargetType="DevExpress.Persistent.BaseImpl.Task" IsNewNode="True" />
+    </Rules>
+  </Validation>
+  <Views>
+    <DetailView Id="AuthenticationStandardLogonParameters_DetailView_Demo" ClassName="DevExpress.ExpressApp.Security.AuthenticationStandardLogonParameters" Caption="Log In" IsNewNode="True">
+      <Items IsNewNode="True">
+        <StaticImage Id="LogonImage" ImageName="Security_Image" SizeMode="AutoSize" VerticalAlign="Middle" IsNewNode="True" />
+        <StaticText Id="LogonText" Text="Enter your user name and password to proceed." IsNewNode="True" />
+        <PropertyEditor Id="Password" PropertyName="Password" View="" ToolTip="Leave this field empty and hit the Enter key to log in" IsNewNode="True" />
+        <StaticText Id="PasswordHint" Text="This demo app does not require a password for login" IsNewNode="True" />
+        <PropertyEditor Id="UserName" PropertyName="UserName" IsNewNode="True" />
+        <StaticText Id="WelcomeText" Text="Welcome to the eXpressApp Framework Main Demo" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" ShowCaption="False" Index="0" IsNewNode="True">
+          <LayoutGroup Id="RootGroup" Direction="Horizontal" ShowCaption="False" Index="0" IsNewNode="True">
+            <LayoutGroup Id="ImageGroup" Index="0" ShowCaption="False" RelativeSize="1" IsNewNode="True">
+              <LayoutItem Id="LogonImage" Index="0" ShowCaption="False" ViewItem="LogonImage" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="EditorsGroup" Index="1" ShowCaption="False" RelativeSize="99" IsNewNode="True">
+              <LayoutGroup Id="Text" Index="0" ShowCaption="False" IsNewNode="True">
+                <LayoutItem Id="WelcomeText" Index="0" ShowCaption="False" ViewItem="WelcomeText" IsNewNode="True" />
+                <LayoutItem Id="LogonText" Index="1" ShowCaption="False" ViewItem="LogonText" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Editors" Index="1" ShowCaption="False" IsNewNode="True">
+                <LayoutItem Id="UserName" Index="1" ViewItem="UserName" IsNewNode="True" />
+                <LayoutItem Id="Password" Index="2" ViewItem="Password" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="PasswordHintGroup" Index="2" ShowCaption="False" IsNewNode="True">
+                <LayoutItem Id="PasswordHint" Index="0" ViewItem="PasswordHint" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Contact_DetailView">
+      <Items>
+        <PropertyEditor Id="Address1" Caption="Address" />
+        <PropertyEditor Id="Address2" Removed="True" />
+        <PropertyEditor Id="Birthday" Removed="True" />
+        <PropertyEditor Id="Department.Office" PropertyName="Department.Office" IsNewNode="True" />
+        <PropertyEditor Id="Manager" ToolTip="Select a manager for the current contact from available managers in the selected department" />
+        <PropertyEditor Id="Position" ToolTip="Select a job position for the current contact from available positions in the selected department" />
+        <PropertyEditor Id="Tasks" ToolTip="View, assign or remove tasks for the current contact" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="57.862903225806448">
+            <LayoutGroup Id="Person" RelativeSize="50.871080139372822" Index="0" Caption="Details" ShowCaption="True">
+              <LayoutGroup Id="Person_col1" RelativeSize="85" Direction="Horizontal" Caption="Person_col1">
+                <LayoutGroup Id="Person_col1a" ShowCaption="False" Index="0" RelativeSize="45" IsNewNode="True">
+                  <LayoutItem Id="FirstName" ViewItem="FirstName" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                  <LayoutItem Id="MiddleName" ViewItem="MiddleName" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="LastName" ViewItem="LastName" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="FullName" ViewItem="FullName" Index="3" RelativeSize="21.428571428571427" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="FirstName" Index="0" RelativeSize="20" ViewItem="FirstName" Removed="True" />
+                <LayoutGroup Id="Person_col1b" ShowCaption="False" Index="1" RelativeSize="55" IsNewNode="True">
+                  <LayoutItem Id="TitleOfCourtesy" ViewItem="TitleOfCourtesy" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                  <LayoutItem Id="Email" ViewItem="Email" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="BirthDate" ViewItem="BirthDate" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="Address1" ViewItem="Address1" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="MiddleName" Index="1" RelativeSize="15" ViewItem="MiddleName" Removed="True" />
+                <LayoutItem Id="LastName" Index="2" RelativeSize="15" ViewItem="LastName" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Person_col2" RelativeSize="15" Caption="Person_col2">
+                <LayoutItem Id="Photo" Index="0" RelativeSize="100" ViewItem="Photo" IsNewNode="True" />
+                <LayoutItem Id="Birthday" RelativeSize="71.428571428571431" Removed="True" />
+                <LayoutItem Id="Email" ViewItem="Email" Removed="True" />
+                <LayoutItem Id="FullName" ViewItem="FullName" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Contact" RelativeSize="49.128919860627178" Index="1" Caption="Additional Information" Direction="Vertical">
+              <LayoutGroup Id="Contact_col1" RelativeSize="100" Caption="Contact_col1" Direction="Horizontal">
+                <LayoutGroup Id="Contact_col1a" ShowCaption="False" Caption="" Index="1" RelativeSize="61.75" IsNewNode="True">
+                  <LayoutItem Id="Department" ViewItem="Department" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                  <LayoutItem Id="Department.Office" ViewItem="Department.Office" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="Position" ViewItem="Position" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="Manager" ViewItem="Manager" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="NickName" RelativeSize="28.571428571428573" Index="0" ViewItem="NickName" Removed="True" />
+                <LayoutItem Id="TitleOfCourtesy" Index="0" RelativeSize="20" ViewItem="TitleOfCourtesy" Removed="True" />
+                <LayoutGroup Id="Contact_col1b" ShowCaption="False" Caption="" Index="0" RelativeSize="38.25" IsNewNode="True">
+                  <LayoutItem Id="NickName" ViewItem="NickName" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
+                  <LayoutItem Id="SpouseName" ViewItem="SpouseName" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="Anniversary" ViewItem="Anniversary" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
+                  <LayoutItem Id="WebPageAddress" ViewItem="WebPageAddress" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="SpouseName" Index="1" RelativeSize="13.043478260869565" ViewItem="SpouseName" Removed="True" />
+                <LayoutItem Id="WebPageAddress" ViewItem="WebPageAddress" Index="1" RelativeSize="23.529411764705884" Removed="True" />
+                <LayoutItem Id="Manager" ViewItem="Manager" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Contact_col2" RelativeSize="33.673469387755105" Caption="Contact_col2" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="Department" RelativeSize="28.571428571428573" Index="0" ViewItem="Department" Removed="True" />
+                <LayoutItem Id="Position" Index="0" RelativeSize="23.529411764705884" ViewItem="Position" Removed="True" />
+                <LayoutItem Id="Location" Index="4" RelativeSize="13.043478260869565" Removed="True" />
+                <LayoutItem Id="Anniversary" ViewItem="Anniversary" Removed="True" />
+                <LayoutItem Id="BirthDate" RelativeSize="15" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Party" Removed="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="17.54032258064516">
+            <LayoutItem Id="Notes" RelativeSize="100" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="24.596774193548388">
+            <LayoutGroup Id="Tasks" Direction="Vertical" RelativeSize="100" Index="0">
+              <LayoutItem Id="Tasks" RelativeSize="100" ViewItem="Tasks" />
+            </LayoutGroup>
+            <LayoutGroup Id="ChangeHistory" Direction="Vertical" RelativeSize="100" Index="1">
+              <LayoutItem Id="ChangeHistory" RelativeSize="100" ViewItem="ChangeHistory" />
+            </LayoutGroup>
+            <LayoutGroup Id="PhoneNumbers" Direction="Vertical" RelativeSize="100" Index="2">
+              <LayoutItem Id="PhoneNumbers" RelativeSize="100" ViewItem="PhoneNumbers" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Contact_ListView" Caption="Contacts" IsGroupPanelVisible="True" AutoExpandAllGroups="True">
+      <Columns>
+        <ColumnInfo Id="Anniversary" PropertyName="Anniversary" Index="-1" />
+        <ColumnInfo Id="Department" PropertyName="Department" Index="-1" GroupIndex="0" />
+        <ColumnInfo Id="LastName" PropertyName="LastName" Index="-1" SortIndex="0" SortOrder="Ascending" Width="100" />
+        <ColumnInfo Id="Manager" PropertyName="Manager" Index="-1" />
+        <ColumnInfo Id="NickName" PropertyName="NickName" Index="-1" />
+        <ColumnInfo Id="SpouseName" PropertyName="SpouseName" Index="-1" />
+        <ColumnInfo Id="WebPageAddress" PropertyName="WebPageAddress" Index="-1" />
+        <ColumnInfo Id="TitleOfCourtesy" PropertyName="TitleOfCourtesy" Index="0" />
+        <ColumnInfo Id="FullName" PropertyName="FullName" Index="1" SortIndex="-1" SortOrder="None" />
+        <ColumnInfo Id="Position" PropertyName="Position" Index="2" />
+        <ColumnInfo Id="Email" PropertyName="Email" Index="3" />
+        <ColumnInfo Id="BirthDate" PropertyName="BirthDate" Index="4" />
+        <ColumnInfo Id="Birthday" Removed="True" />
+      </Columns>
+      <Filters CurrentFilterId="AllContacts" IsNewNode="True">
+        <Filter Id="AllContacts" Caption="All Contacts" IsNewNode="True" />
+        <Filter Id="Developers" Criteria="Position.Title = 'Developer'" IsNewNode="True" />
+        <Filter Id="Development Department Contacts" Caption="Development Department Contacts" Criteria="[Department.Title] = 'Development Department' " IsNewNode="True" />
+      </Filters>
+    </ListView>
+    <ListView Id="Contact_ListView_AllColumns" Caption="Contacts" ClassName="MainDemo.Module.BusinessObjects.Contact" IsGroupPanelVisible="False" IsFooterVisible="True" AllowEdit="False" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Address2" PropertyName="Address2" Index="-1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="DisplayName" PropertyName="DisplayName" Index="-1" Width="400" IsNewNode="True" />
+        <ColumnInfo Id="FullName" PropertyName="FullName" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Manager" PropertyName="Manager" Index="-1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="MiddleName" PropertyName="MiddleName" Index="-1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="NickName" PropertyName="NickName" Index="-1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Notes" PropertyName="Notes" Index="-1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Photo" PropertyName="Photo" Index="-1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="WebPageAddress" PropertyName="WebPageAddress" Index="-1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="TitleOfCourtesy" PropertyName="TitleOfCourtesy" Index="0" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="FirstName" PropertyName="FirstName" Index="1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="LastName" PropertyName="LastName" Index="2" SortIndex="0" SortOrder="Ascending" Width="100" IsNewNode="True" />
+        <ColumnInfo Id="Position" PropertyName="Position" Index="3" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Department" PropertyName="Department" Index="4" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Email" PropertyName="Email" Index="5" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="BirthDate" PropertyName="BirthDate" Index="6" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Address1" PropertyName="Address1" Index="7" Width="70" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="Contact_ListView_Varied" ClassName="MainDemo.Module.BusinessObjects.Contact" IsNewNode="True">
+      <Variants IsNewNode="True">
+        <Variant Id="Default" Caption="Few columns" ViewID="Contact_ListView" Index="1" IsNewNode="True" />
+        <Variant Id="All columns" Caption="All columns" ViewID="Contact_ListView_AllColumns" Index="2" IsNewNode="True" />
+      </Variants>
+    </ListView>
+    <ListView Id="Contact_LookupListView">
+      <Columns>
+        <ColumnInfo Id="FullName" PropertyName="FullName" Index="-1" SortOrder="None" />
+        <ColumnInfo Id="LastName" PropertyName="LastName" Index="0" SortOrder="Ascending" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="Contact_Tasks_ListView" AllowEdit="True" NewItemRowPosition="Top" />
+    <ListView Id="DemoTask_Contacts_ListView">
+      <Columns>
+        <ColumnInfo Id="Birthday" Removed="True" />
+        <ColumnInfo Id="Anniversary" Index="-1" />
+        <ColumnInfo Id="Manager" Index="-1" />
+        <ColumnInfo Id="NickName" Index="-1" />
+        <ColumnInfo Id="SpouseName" Index="-1" />
+        <ColumnInfo Id="TitleOfCourtesy" Index="-1" />
+        <ColumnInfo Id="WebPageAddress" Index="-1" />
+        <ColumnInfo Id="Department" Index="1" />
+        <ColumnInfo Id="BirthDate" Index="2" />
+        <ColumnInfo Id="Position" Index="3" />
+      </Columns>
+    </ListView>
+    <DetailView Id="DemoTask_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="56.98924731182796">
+            <LayoutGroup Id="DemoTask" RelativeSize="55.849056603773583">
+              <LayoutItem Id="Subject" ViewItem="Subject" Index="0" RelativeSize="47.2972972972973" IsNewNode="True" />
+              <LayoutItem Id="AssignedTo" ViewItem="AssignedTo" Index="1" RelativeSize="16.216216216216218" IsNewNode="True" />
+              <LayoutItem Id="EstimatedWorkHours" Index="2" RelativeSize="16.216216216216218" />
+              <LayoutItem Id="Priority" Index="2" RelativeSize="16.216216216216218" Removed="True" />
+              <LayoutItem Id="ActualWorkHours" Index="3" RelativeSize="20.27027027027027" />
+            </LayoutGroup>
+            <LayoutGroup Id="Task" RelativeSize="44.150943396226417">
+              <LayoutGroup Id="Task_col1" RelativeSize="49.895178197064986">
+                <LayoutItem Id="Priority" ViewItem="Priority" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="DueDate" Index="1" RelativeSize="27.272727272727273" />
+                <LayoutItem Id="AssignedTo" Index="2" RelativeSize="36.363636363636367" Removed="True" />
+                <LayoutItem Id="StartDate" Index="2" RelativeSize="36.363636363636367" />
+                <LayoutItem Id="Subject" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Task_col2" RelativeSize="50.104821802935014">
+                <LayoutItem Id="Status" RelativeSize="36.363636363636367" />
+                <LayoutItem Id="PercentCompleted" RelativeSize="27.272727272727273" />
+                <LayoutItem Id="DateCompleted" RelativeSize="36.363636363636367" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="13.978494623655914">
+            <LayoutItem Id="Description" RelativeSize="100" />
+          </LayoutGroup>
+          <LayoutGroup Id="Contacts_Group" Direction="Vertical" RelativeSize="29.032258064516128">
+            <LayoutItem Id="Contacts" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="UseSQLAlternativeInfo_DetailView" Caption="Warning!">
+      <Items>
+        <PropertyEditor Id="Alternative" Removed="True" />
+        <StaticText Id="AlternativeStaticText" HorizontalAlign="Left" VerticalAlign="Middle"  Text="XPO InMemoryDataStore" IsNewNode="True"/>
+        <StaticImage Id="InfoStaticImage" ImageName="State_Validation_Information" SvgImageHeight="64" SvgImageWidth="64" IsNewNode="True" />
+        <StaticText Id="NoteStaticText" HorizontalAlign="Left" VerticalAlign="Middle"  Text="This may cause performance issues. All data modifications will be lost when you close the application." IsNewNode="True" />
+        <PropertyEditor Id="Restrictions" Removed="True" />
+        <PropertyEditor Id="SQLIssue" Removed="True" />
+        <StaticText Id="SQLIssueText" VerticalAlign="Middle" HorizontalAlign="Left" Text="Could not find a SQL database server on your computer." IsNewNode="True" />
+      </Items>
+    </DetailView>
+    <ListView Id="DemoTask_ListView" Caption="Tasks" AllowEdit="True" NewItemRowPosition="Top" IsFooterVisible="False">
+      <Columns>
+        <ColumnInfo Id="ActualWorkHours" Index="-1">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" Index="0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="DateCompleted" Index="-1" />
+        <ColumnInfo Id="EstimatedWorkHours" Index="-1" />
+        <ColumnInfo Id="Status" Index="1" />
+        <ColumnInfo Id="AssignedTo" Index="2" />
+        <ColumnInfo Id="StartDate" Index="3" />
+        <ColumnInfo Id="DueDate" Index="4" />
+        <ColumnInfo Id="Priority" Index="5" />
+      </Columns>
+    </ListView>
+    <ListView Id="Department_Contacts_ListView">
+      <Columns>
+        <ColumnInfo Id="Birthday" Removed="True" />
+        <ColumnInfo Id="Anniversary" Index="-1" />
+        <ColumnInfo Id="Manager" Index="-1" />
+        <ColumnInfo Id="NickName" Index="-1" />
+        <ColumnInfo Id="SpouseName" Index="-1" />
+        <ColumnInfo Id="TitleOfCourtesy" Index="-1" />
+        <ColumnInfo Id="WebPageAddress" Index="-1" />
+        <ColumnInfo Id="BirthDate" Index="1" />
+        <ColumnInfo Id="Position" Index="2" />
+      </Columns>
+    </ListView>
+    <ListView Id="Department_ListView" Caption="Departments" MasterDetailMode="ListViewAndDetailView" />
+    <DetailView Id="Event_DetailView" Caption="Appointment">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Event">
+              <LayoutGroup Id="Event_col2">
+                <LayoutItem Id="ReminderTime" ViewItem="ReminderTime" SizeConstraintsType="Default" Index="2" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Event_ListView" Caption="Calendar" />
+    <ListView Id="Note_ListView" Caption="Notes" />
+    <ListView Id="Payment_ListView" Caption="Payments" />
+    <ListView Id="PermissionPolicyRole_ListView" Caption="Roles" />
+    <ListView Id="PermissionPolicyUser_ListView" Caption="Users" />
+    <DetailView Id="Person_DetailView">
+      <Items>
+        <PropertyEditor Id="Birthday" Removed="True" />
+      </Items>
+    </DetailView>
+    <ListView Id="Person_ListView">
+      <Columns>
+        <ColumnInfo Id="Birthday" Removed="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="Position_ListView" Caption="Positions" />
+    <ListView Id="Resume_ListView" Caption="Resumes" />
+  </Views>
+</Application>

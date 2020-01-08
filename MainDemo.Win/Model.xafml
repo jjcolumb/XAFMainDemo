@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+    <ActionDesign>
+    <Actions>
+      <Action Id="Cancel" Caption="Undo" />
+      <Action Id="ChartWizard" Caption="Chart Wizard" /> 
+      <Action Id="ChangeVariant" Caption="Variants" ImageName="Navigation_Group_ViewVariant" />
+      <Action Id="FindBySubjectAction" PaintStyle="Image" />
+      <Action Id="RichEdit_Open" Caption="Load Document"  />
+      <Action Id="SaveAs" Caption="Save Document" />
+      <Action Id="SaveTo" Caption="Save Attachment" />
+      <Action Id="ShowInReportV2" Caption="Report Print Preview" />
+      <Action Id="PrintChart" Caption="Chart Print Preview" />
+      <Action Id="PrintPreviewPivotGrid" Caption="PivotGrid Print Preview" />
+      <Action Id="Open" Caption="Attachment" />
+      <Action Id="ShowReportDesignerV2" Caption="Edit in Designer" />
+      <Action Id="Task.MarkCompleted" Caption="Mark Completed" />
+    </Actions>
+    <ActionToContainerMapping>
+      <ActionContainer Id="Close">
+        <ActionLink ActionId="Close" Removed="True" />
+      </ActionContainer>
+      <ActionContainer Id="Edit">
+        <ActionLink ActionId="New" Index="0" IsNewNode="True" />
+        <ActionLink ActionId="AddFromFile" Index="1" IsNewNode="True" />
+        <ActionLink ActionId="CopyPredefinedReport" Index="2" IsNewNode="True" />
+        <ActionLink ActionId="Save" Index="3" IsNewNode="True" />
+        <ActionLink ActionId="SaveAndClose" Index="4" IsNewNode="True" />
+        <ActionLink ActionId="SaveAndNew" Index="5" IsNewNode="True" />
+        <ActionLink ActionId="BindAnalysisData" Removed="True" />
+        <ActionLink ActionId="ChangePasswordByUser" Removed="True" />
+        <ActionLink ActionId="ChartWizard" Removed="True" />
+        <ActionLink ActionId="EditReportControllerV2.Edit" Removed="True" />
+        <ActionLink ActionId="HideItemsFromDashboard" Removed="True" />
+        <ActionLink ActionId="OrganizeDashboard" Removed="True" />
+        <ActionLink ActionId="ResetPassword" Removed="True" />
+        <ActionLink ActionId="SetTaskAction" Removed="True" />
+        <ActionLink ActionId="ShowAllContexts" Removed="True" />
+        <ActionLink ActionId="ShowItemsOnDashboard" Removed="True" />
+        <ActionLink ActionId="ShowNotesAction" Removed="True" />
+        <ActionLink ActionId="UnbindAnalysisData" Removed="True" />
+        <ActionLink ActionId="Delete" Index="8" />
+        <ActionLink ActionId="Delete Item" Index="9" />
+      </ActionContainer>
+      <ActionContainer Id="Filters">
+        <ActionLink ActionId="SetFilter" Index="0" />
+        <ActionLink ActionId="FullTextSearch" Index="1" IsNewNode="True"/>
+        <ActionLink ActionId="FindBySubjectAction" Index="2" IsNewNode="True" />
+      </ActionContainer>
+      <ActionContainer Id="FullTextSearch">        
+        <ActionLink ActionId="FullTextSearch" Removed="True" />
+      </ActionContainer>
+      <ActionContainer Id="ObjectsCreation">
+        <ActionLink ActionId="AddFromFile" Removed="True" />
+        <ActionLink ActionId="New" Removed="True" />
+        <ActionLink ActionId="RichEdit_Open" Removed="True" />
+      </ActionContainer>
+      <ActionContainer Id="OpenObject">
+        <ActionLink ActionId="Open" Removed="True" />
+        <ActionLink ActionId="OpenObject" Removed="True" />
+      </ActionContainer>
+      <ActionContainer Id="Hidden" IsNewNode="True">
+        <ActionLink ActionId="OpenObject" IsNewNode="True" />
+        <ActionLink ActionId="ResetViewSettings" IsNewNode="True" />
+      </ActionContainer>
+      <ActionContainer Id="RecordEdit">
+        <ActionLink ActionId="SaveTo" Index="0" IsNewNode="True" />
+        <ActionLink ActionId="ShowInDocument" Index="1" IsNewNode="True" />
+        <ActionLink ActionId="ShowReportDesignerV2" Index="2" IsNewNode="True" />
+        <ActionLink ActionId="EditReportControllerV2.Edit" Index="3" IsNewNode="True" />
+        <ActionLink ActionId="DemoTask.Postpone" Index="4" />
+        <ActionLink ActionId="ClearTasksAction" Index="5" />
+        <ActionLink ActionId="Task.MarkCompleted" Index="6" />
+        <ActionLink ActionId="SetTaskAction" Index="7" IsNewNode="True" />
+        <ActionLink ActionId="ShowNotesAction" Index="8" IsNewNode="True" />
+        <ActionLink ActionId="BindAnalysisData" Index="9" IsNewNode="True" />
+        <ActionLink ActionId="UnbindAnalysisData" Index="10" IsNewNode="True" />
+        <ActionLink ActionId="ChartWizard" Index="11" IsNewNode="True" />
+        <ActionLink ActionId="ChangePasswordByUser" Index="12" IsNewNode="True" />
+        <ActionLink ActionId="ResetPassword" Index="13" IsNewNode="True" />
+        <ActionLink ActionId="OrganizeDashboard" Index="14" IsNewNode="True" />
+        <ActionLink ActionId="ShowItemsOnDashboard" Index="15" IsNewNode="True" />
+        <ActionLink ActionId="HideItemsFromDashboard" Index="16" IsNewNode="True" />
+        <ActionLink ActionId="RichEdit_Open" Index="17" IsNewNode="True" />
+        <ActionLink ActionId="SaveAs" Index="18" IsNewNode="True"/>
+        <ActionLink ActionId="ShowAllContexts" Index="19" IsNewNode="True" />
+        <ActionLink ActionId="Cancel" Index="20" IsNewNode="True" />
+        <ActionLink ActionId="Refresh" Index="21" IsNewNode="True" />
+      </ActionContainer>
+      <ActionContainer Id="RecordsNavigation">
+        <ActionLink ActionId="Open" Index="3" IsNewNode="True" />
+      </ActionContainer>
+      <ActionContainer Id="Reports">
+        <ActionLink ActionId="CopyPredefinedReport" Removed="True" />
+        <ActionLink ActionId="ExecuteReportV2" Removed="True" />
+        <ActionLink ActionId="ShowInDocument" Removed="True" />
+        <ActionLink ActionId="ShowInReportV2" Removed="True" />
+        <ActionLink ActionId="ShowReportDesignerV2" Removed="True" />
+      </ActionContainer>
+      <ActionContainer Id="Save">
+        <ActionLink ActionId="Save" Removed="True" />
+        <ActionLink ActionId="SaveAndClose" Removed="True" />
+        <ActionLink ActionId="SaveAndNew" Removed="True" />
+        <ActionLink ActionId="SaveAs" Removed="True" />
+        <ActionLink ActionId="SaveTo" Removed="True" />
+      </ActionContainer>
+      <ActionContainer Id="UndoRedo">
+        <ActionLink ActionId="Cancel" Removed="True" />
+      </ActionContainer>
+      <ActionContainer Id="View">
+        <ActionLink ActionId="Refresh" Removed="True" />
+        <ActionLink ActionId="PrintChart" Index="0" />
+        <ActionLink ActionId="PrintPreviewPivotGrid" Index="1" />
+        <ActionLink ActionId="ExecuteReportV2" Index="2" IsNewNode="True" />
+        <ActionLink ActionId="ShowInReportV2" Index="3" IsNewNode="True" />
+        <ActionLink ActionId="ChangeVariant" Index="4" />
+        <ActionLink ActionId="Close" Index="5" IsNewNode="True" />
+        <ActionLink ActionId="ResetViewSettings" Removed ="True" />
+        <ActionLink ActionId="FindBySubjectAction" Removed="True" />
+      </ActionContainer>
+      <ActionContainer Id="LookupNew" IsNewNode="True">
+        <ActionLink ActionId="New" IsNewNode="True" />
+      </ActionContainer>
+      <ActionContainer Id="LookupFullTextSearch" IsNewNode="True">
+        <ActionLink ActionId="FullTextSearch" IsNewNode="True" />
+      </ActionContainer>
+    </ActionToContainerMapping>
+  </ActionDesign>
+  <Localization>
+    <LocalizationGroup Name="FrameTemplates">
+      <LocalizationGroup Name="DevExpress.ExpressApp.Win.Templates.Ribbon.DetailRibbonFormV2">
+        <LocalizationItem Name="ribbonGroupEdit.Text" Value="General" />
+        <LocalizationItem Name="ribbonGroupOpenObject.Text" Value="Navigation" />
+        <LocalizationItem Name="ribbonGroupRecordEdit.Text" Value="Edit" />
+        <LocalizationItem Name="ribbonGroupRecordsNavigation.Text" Value="Navigation" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Win.Templates.Ribbon.LightStyleMainRibbonForm">
+        <LocalizationItem Name="ribbonGroupEdit.Text" Value="General" />
+        <LocalizationItem Name="ribbonGroupOpenObject.Text" Value="Navigation" />
+        <LocalizationItem Name="ribbonGroupRecordEdit.Text" Value="Edit" />
+        <LocalizationItem Name="ribbonGroupViewsHistoryNavigation.Text" Value="History" />
+      </LocalizationGroup>
+    </LocalizationGroup>
+  </Localization>
+  <Options UIType="TabbedMDI" FormStyle="Ribbon" />
+</Application>

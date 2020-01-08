@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Logo="ExpressAppLogo">
+  <BOModel>
+    <Class Name="DevExpress.Persistent.BaseImpl.Note">
+      <OwnMembers>
+        <Member Name="Text" PropertyEditorType="DevExpress.ExpressApp.Office.Win.RichTextPropertyEditor" DocumentStorageFormat="HTML" />
+      </OwnMembers>
+    </Class>
+    <Class Name="MainDemo.Module.BusinessObjects.Payment">
+      <OwnMembers>
+        <Member Name="Rate" DisplayFormat="{0:C}" EditMask="C" />
+        <Member Name="Amount" DisplayFormat="{0:C}" EditMask="C" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <NavigationItems NavigationStyle="Accordion" ShowImages="False" DefaultChildItemsDisplayStyle="List">
+    <Items>
+      <Item Id="Default">
+        <Items>
+          <Item Id="Contact_ListView" Index="0" />
+          <Item Id="DemoTask_ListView" Index="1" />
+          <Item Id="Department_ListView" Index="2" />
+          <Item Id="Event_ListView" Caption="Calendar" Index="3" />
+          <Item Id="Note" Index="5" />
+          <Item Id="Payment_ListView" Index="6" />
+          <Item Id="Resume_ListView" Index="7" />
+        </Items>
+      </Item>
+      <Item Id="Reports">
+        <Items>
+          <Item Id="Analysis_ListView" Index="0" />
+          <Item Id="ReportsV2" Index="1" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <Options ShowTabImage="False">
+    <LayoutManagerOptions EnableLayoutGroupImages="False" GroupStyle="Title" ItemToBorderHorizontalDistance="12" ItemToItemHorizontalDistance="24" />
+  </Options>
+  <SchemaModules>
+    <SchemaModule Name="SchedulerModuleBase" Version="18.2.0.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerWindowsFormsModule" Version="18.2.0.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="18.2.0.0" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="18.2.0.0" IsNewNode="True" />
+    <SchemaModule Name="ValidationModule" Version="18.2.0.0" />
+    <SchemaModule Name="ViewVariantsModule" Version="18.2.0.0" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="AuthenticationStandardLogonParameters_DetailView_Demo">
+      <Items>
+        <StaticImage Id="LogonImage" SvgImageWidth="72" SvgImageHeight="72" />
+      </Items>
+    </DetailView>
+    <ListView Id="Contact_ListView">
+      <Columns>
+        <ColumnInfo Id="Department" SortOrder="Ascending" />
+      </Columns>
+    </ListView>
+    <ListView Id="Note_ListView">
+      <Columns>
+        <ColumnInfo Id="Text" CustomHeight="20" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Contact_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="60" >
+            <LayoutGroup Id="Person" RelativeSize="55">
+              <LayoutGroup Id="Person_col1" />
+              <LayoutGroup Id="Person_col2">
+                <LayoutItem Id="Photo" RelativeSize="100" Index="0" ShowCaption="False" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Contact" RelativeSize="45" />
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" ShowCaption="True" RelativeSize="18">
+            <LayoutItem Id="Notes" ShowCaption="False" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="22">
+            <LayoutGroup Id="Tasks" TextAlignMode="AlignWithChildren">
+              <LayoutItem Id="Tasks" TextAlignMode="AutoSize" MinSize="0, 120" SizeConstraintsType="Custom"/>
+            </LayoutGroup>
+            <LayoutGroup Id="ChangeHistory" TextAlignMode="AlignWithChildren">
+              <LayoutItem Id="ChangeHistory" TextAlignMode="AutoSize" />
+            </LayoutGroup>
+            <LayoutGroup Id="PhoneNumbers" TextAlignMode="AlignWithChildren">
+              <LayoutItem Id="PhoneNumbers" TextAlignMode="AutoSize" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="UseSQLAlternativeInfo_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" Direction="Vertical" RelativeSize="100">
+          <LayoutGroup Id="TopAirGroup" Index="0" ShowCaption="False" RelativeSize="15" IsNewNode="True" />
+          <LayoutGroup Id="Info" Index="1" Direction="Horizontal" RelativeSize="85" IsNewNode="True">
+            <LayoutGroup Id="LeftAirGroup" ShowCaption="false" Index="0" RelativeSize="2" IsNewNode="True"/>
+            <LayoutGroup Id="IconGroup" ShowCaption="False" Index="1" RelativeSize="18" IsNewNode="True">
+              <LayoutItem Id="InfoStaticImage" ViewItem="InfoStaticImage" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="TextInfoGroup" ShowCaption="False" Index="2" TextAlignMode="AlignWithChildren" RelativeSize="65" IsNewNode="True">
+              <LayoutItem Id="TopEmptyItem" Index="0" RelativeSize="2.6517794836008375" IsNewNode="True" />
+              <LayoutItem Id="SQLIssueText" TextAlignMode="AutoSize" ViewItem="SQLIssueText" Index="1" RelativeSize="2.3028611304954643" IsNewNode="True" />
+              <LayoutItem Id="SQLIssueAlternativeEmptyItem" Index="2" RelativeSize="2.7215631542219119" IsNewNode="True" />
+              <LayoutItem Id="AlternativeStaticText" TextAlignMode="AutoSize" ViewItem="AlternativeStaticText" Index="3" RelativeSize="2.3028611304954643" IsNewNode="True" />
+              <LayoutItem Id="AlternativeNoteEmptyItem" Index="4" RelativeSize="2.5819958129797627" IsNewNode="True" />
+              <LayoutItem Id="NoteStaticText" TextAlignMode="AutoSize" ViewItem="NoteStaticText" Index="5" RelativeSize="2.3028611304954643" IsNewNode="True" />
+              <LayoutItem Id="BottomEmptyItem" Index="6" RelativeSize="85.1360781577111" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="RightAirGroup" ShowCaption="false" Index="3" RelativeSize="15" IsNewNode="True"/>
+          </LayoutGroup>
+          <LayoutGroup Id="SimpleEditors" Removed="True" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>
